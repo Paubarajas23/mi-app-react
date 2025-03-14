@@ -1,25 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import SearchBox from './components/SearchBox';
+import FilteredList from './components/FilteredList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [searchTerm, setSearchTerm] = useState("");
+    const items = ["React", "JavaScript", "Node.js", "CSS", "HTML", "Python", "Vue", "Angular"];
+
+    return (
+        <div>
+            <h1>Filtrado de Listas</h1>
+            <SearchBox setSearchTerm={setSearchTerm} />
+            <FilteredList items={items} searchTerm={searchTerm} />
+        </div>
+    );
+};
 
 export default App;
